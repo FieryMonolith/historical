@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Functor", "Functor\Functor.vcproj", "{EF5A4563-15E0-48B8-99C6-F8D5962F6618}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FunctorTest", "FunctorTest\FunctorTest.vcproj", "{6E6C346A-F7E7-419C-81F1-64E7F0038828}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Type", "..\..\Type\Type\Type\Type.vcproj", "{E0020E74-F5BC-43F9-B742-0D2221B42540}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF5A4563-15E0-48B8-99C6-F8D5962F6618}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF5A4563-15E0-48B8-99C6-F8D5962F6618}.Debug|Win32.Build.0 = Debug|Win32
+		{EF5A4563-15E0-48B8-99C6-F8D5962F6618}.Release|Win32.ActiveCfg = Release|Win32
+		{6E6C346A-F7E7-419C-81F1-64E7F0038828}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6E6C346A-F7E7-419C-81F1-64E7F0038828}.Debug|Win32.Build.0 = Debug|Win32
+		{6E6C346A-F7E7-419C-81F1-64E7F0038828}.Release|Win32.ActiveCfg = Release|Win32
+		{6E6C346A-F7E7-419C-81F1-64E7F0038828}.Release|Win32.Build.0 = Release|Win32
+		{E0020E74-F5BC-43F9-B742-0D2221B42540}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0020E74-F5BC-43F9-B742-0D2221B42540}.Debug|Win32.Build.0 = Debug|Win32
+		{E0020E74-F5BC-43F9-B742-0D2221B42540}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>WhirlingDervish: Shape Engine</title>
+</head>
+<body style="color: rgb(51, 255, 51); background-color: rgb(0, 0, 0);">
+
+<div style="text-align: center;">
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+<br>
+<a href="constructs.html">Constructs</a>
+&nbsp;&nbsp;
+<a href="physical_point.html">Physical Point</a>
+&nbsp;&nbsp;
+<a href="spring.html">Spring</a>
+&nbsp;&nbsp;
+<a href="constraints.html">Constraints</a>
+</div>
+
+<h2>Shape Engine</h2>
+
+<h3>Summary</h3>
+
+<h4>
+<pre>
+    The primary function of this class is to manage point-massess and springs.
+The initialization method is residual to make its interface like the other
+engines, though it always returns true.  The CreatePoint and CreateSpring
+returns an unused shape, or NULL if an error occurs, which is stored in
+the map for that shape.  Thus the ShapeEngine assigns an id to the shape and
+manages that shape.  The remove function will remove the shape from the
+appropriate map and append it to the end of the list of available shapes.
+The rest of the functions are self explanatory.
+</pre>
+</h4>
+
+<h3>Header</h3>
+
+<h4>
+<pre>
+class ShapeEngine {
+public:
+  ShapeEngine(void);
+  ~ShapeEngine(void);
+
+  // Trying to make a common interface for engines, but this engine starts gtg
+  bool Initialize(void);
+
+  unsigned int PointCount(void) const;
+  PhysicalPoint *CreatePoint(int64 &id, const Vector3d &position,
+		double mass     = PhysicalPointConstraints::DEFAULT_MASS,
+		double staticMu = PhysicalPointConstraints::DEFAULT_STATIC_MU,
+		double kineticMu= PhysicalPointConstraints::DEFAULT_KINETIC_MU,
+		double drag     = PhysicalPointConstraints::DEFAULT_DRAG);
+  bool HasPoint(int64 id) const;
+  PhysicalPoint *GetPoint(int64 id) const;
+  void RemovePoint(int64 id);
+  const std::map<int64, PhysicalPoint *> &Points(void) const {return d_points;}
+
+  unsigned int SpringCount(void) const;
+  Spring *CreateSpring(int64 &id,
+      double innateLength      = SpringConstraints::DEFAULT_INNATE_LENGTH,
+      double ks                = SpringConstraints::DEFAULT_KS,
+      double kd                = SpringConstraints::DEFAULT_KD,
+      double fluctuation_delta = SpringConstraints::DEFAULT_FLUCTUATION_DELTA,
+      double fluctuation_start = SpringConstraints::DEFAULT_FLUCTUATION_START);
+  bool HasSpring(int64 id) const;
+  Spring *GetSpring(int64 id) const;
+  void RemoveSpring(int64 id);
+  const std::map<int64, Spring *> &Springs(void) const { return d_springs; }
+
+private:
+  std::map<int64, PhysicalPoint *> d_points;
+  int64 d_pointId;
+
+  std::map<int64, Spring *> d_springs;
+  int64 d_springId;
+
+  std::vector<PhysicalPoint *> d_availablePoints;
+  std::vector<Spring *> d_availableSprings;
+};
+
+<div style="text-align: center;">
+<a href="constructs.html">Constructs</a>
+&nbsp;&nbsp;
+<a href="physical_point.html">Physical Point</a>
+&nbsp;&nbsp;
+<a href="spring.html">Spring</a>
+&nbsp;&nbsp;
+<a href="constraints.html">Constraints</a>
+<br>
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+</div>
+
+</body>
+</html>

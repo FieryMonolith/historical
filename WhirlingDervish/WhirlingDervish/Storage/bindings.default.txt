@@ -1,0 +1,21 @@
+Ctrl+Q	File|Quit
+Ctrl+H	Help|About
+M	Mouse Toggle
+N	Freelook
+S	Move Forward
+X	Move Backward
+A	Move Left
+D	Move Right
+Z	Turn Left
+C	Turn Right
+Q	Move Up
+E	Move Down
+F	Pitch Up
+V	Pitch Down
+Ctrl+G	Grid
+P	Pause
+Ctrl+C	Create Random
+Ctrl+R	Remove
+Ctrl+T	Run Settings
+Ctrl+B	Start Run
+Ctrl+N	Stop Run

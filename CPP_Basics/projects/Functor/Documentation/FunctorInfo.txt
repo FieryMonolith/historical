@@ -1,0 +1,141 @@
+This file will provide a quick description of the Functor subsystem and some
+comments.
+
+Due to the amount of template usage, this subsystem does not provide a library,
+but does provide a number of header files.  There is a single test function
+available that ensures the functors are in working order.
+
+The Functor subsystem is contained within the nFunctor namespace and contains
+the following components (more info provide in header files):
+ -bFunctor- This is a templateless base class for all functors.  This can be
+    useful in particular instances where heterogeneous storage of functors is
+    is required, and deletion of those functors needs to occur without
+    access to their template types.
+
+ -iFunctor- This provides the interface for all functors.  Currently it allows
+    for up to and including fifteen parameter functors.  Essentially, the
+    iFunctor provides cloning and execution.
+
+ -GenericFunctor- GenericFunctor is generic because it can take any member
+    function or callable entity in the constructor and forms a callable entity
+    itself.  This class is generic because it can take a member function in
+    addition to all other callable types.  However, in order to store all these
+    types, it loses type information about wrapped entity.  This makes it
+    difficult to compare for equivalence with other functors including itself.
+    It also means that it has to create new objects, which is why it takes an
+    Allocation object as a template parameter.  By default there is no special
+    allocation just the normal new and delete.
+
+ -Functor- This is an explicit version of GenericFunctor because it uses the
+    type of the callable entity as part of its type.  This means that no object
+    creation is necessary for storage, and comparison for equivalence is
+    possible.  The downside is the potentially long type declarations of
+    recursive functors.  It also means that member functions must be wrapped in
+    a callable object before they can be stored in a Functor.
+
+ -MemberFunctionWrapper- This is the callable wrapper for member functions.
+    It provides the same interface as the other Functors and can be used on its
+    own.  It inherits from iFunctor making it compatible with the other functor
+    types.  This is also an explicit functor.
+
+ -ReturnlessFunctor- This class is intended to wrap any callable entity
+    and strip off its return value.  This class would be useful for creating
+    lists of callable entities that share the same function input but don't
+    care about output.  This functor is essentially, Functor, except it does
+    not return anything.
+
+ -ReturnlessMemFunWrap- This class is intended to wrap class methods
+    and strip off its return value.  This class would be useful for creating
+    lists of callable entities that share the same function input but don't
+    care about output.  This functor is essentially, MemberFunctionWrapper,
+    except it does not return anything.  I found this class helpful when
+    trying to duplicate functionality from using ReturnlessFunctor because
+    I would otherwise have to create a series of intermediate instances to
+    hold the information to be passed to then be used by a ReturnlessFunctor.
+
+ -BindFirst- This a functor that takes other callable entites and a fixed value.
+    The fixed value is always given as the first parameter to the wrapped
+    entity.  Thus, the BindFirst class must define its interface to have one
+    less arguement than the entity it wraps.  This class also provides two
+    helper functions for creating a new BindFirst.  The BindFirst is also an
+    explicit functor.
+
+ -Chain- This a functor that takes two callable entities and executes them
+    both upon the execution of the chain.  Thus, you can create arbitrary
+    chains of execution by chaining together multiple Chain objects.  This
+    class is also explicit and has two helper functions to that can create
+    new Chain objects.
+
+    The concept for this class makes it essentially a static chain.  Once
+    the template parameters have been defined, to swap, add, or remove
+    links from the chain requires that the internal callable entity types
+    match up.  Thus even though they can change, they can only change to other
+    like typed entities.
+
+ -OneToMany- This class is based on the Chain, but allows for a dynamic 
+    chain.  However, to do this forces a loss of generality in that it can only
+    handle functors and any class the derives for iFunctor.  With this in mind,
+    it can keep a "list" of entities to execute.  It can also manipulate that
+    list to add/remove/clear.  Because this class has data to manage other than
+    an entity to wrap, it may need to handle threading at some point.  That is
+    why it takes a StorageType as a template parameter.  That way, the
+    programmer can decide how best to store and access the entities for
+    execution.  Currently, the default StorageType is given in iStorageType.h
+    and only handles single threaded execution.
+
+ -ParmState- This is set up like a functor but instead of forwarding arguements
+    it stores them.  It then provides a method that takes a functor to call
+    using the stored data.  I have not figured out how I want to handle
+    pointers.  Do I copy them or leave them the same?  The point is to keep a
+    copy of the previous call, what if the data pointed to changes?  I was
+    thinking of this class to be used in a delayed functor or a queuing
+    functor.  A queuing functor may be something like a system resource like
+    the mouse gives off its position repeatedly before the wrapped entity is
+    prepared to receive it, but I want to process all of its movements.
+
+
+
+Notes:
+-Until gcc fixes their typename issues with templates such as the inability to
+ use "using typename" with inherited template names and the problem with
+ shadow hidden parameters, I had to leave the template arguement names as
+ typedefs even though they could be inherited.  Supposedly it works on
+ Visual C++, Intel C++, and Comeau.
+-Handling const operator() and entities - here are some notes from iFunctor:
+ * A few notes on why the operator()s are const and what that means for you.
+ *  What do we see here?  If you do not have const on the operator() for the
+ *    functors, you can not wrap const callable entities.  However, it seems
+ *    that while const operator() allows for correct enforcement of calling
+ *    const methods for const entities, it also allows for calling non-const
+ *    methods on non-const entities.  I did not think that the later was valid,
+ *    but apparently it is.  I am going to leave it now for two reasons.  One
+ *    I would have to add duplicates of all operator() for both a const and
+ *    non-const version (how to handle volatile?), and 2) I did a quick test by
+ *    adding both versions to iFunctor and Functor and it will call the
+ *    appropriate version for a non-const Functor, but if the Functor itself is
+ *    const we are right back at square one, calling non-const object's
+ *    non-const member functions.  Hopefully, someone more knowledgable than I
+ *    will figure this out, otherwise I will try to come back at some point and
+ *    figure it out.  What would be nice is to make the functor's operator()s
+ *    const/volatile reflect the wrapped entity's const/volatile settings.
+ *    However this could be tricky for callable classes because you have to
+ *    look at two places: the operator() and the constness of the class itself.
+-By using PtrAccessibleType, all functors can now take callable entities by
+ value, reference, and pointer.  Also see next note.
+-To ensure validity of a functor, all entity pointers will be checked for a
+ null value, which will throw a BadCallableEntity exception.  The previous
+ method of forcing a pointer dereference for pointer types became too much
+ of a hurdle for external templated functions using functors because of the
+ discontinuity between the template parameter and function parameter types.
+
+ All functors assume non-null wrapped entities.  Therefore, there is the
+ possibility of error due to dangling pointers, loss of scope on a given
+ reference, etc.  However, I do not know a way to check for these other than
+ to suggest the use of some sort of smart pointers if you are worried.
+-As far as threading is concerned, I feel it is up to the entities themselves
+ to ensure reentrance, not the functor.  The functor is just a wrapper.
+-One issue of threading that may need to be addressed is execution order.  It is
+ one thing to allow reentrance, but what happens if you have two chains each
+ with a the same entity, how can you ensure the order in which entity is
+ executed in both chains?  At at what level should this be taken care of?
+

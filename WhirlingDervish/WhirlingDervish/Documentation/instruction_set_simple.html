@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Instruction Set: Simple</title>
+</head>
+<body style="color: rgb(51, 255, 51); background-color: rgb(0, 0, 0);">
+
+<div style="text-align: center;">
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+<br>
+<a href="languages.html">Langauges</a>
+</div>
+
+<h2>Instruction Set: Simple</h2>
+<h3>Quick Reference</h3>
+
+<h4>
+<pre>
+<u>commands</u>
+  <a href="#split">split</a>
+  <a href="#split_dup">split_dup</a>
+  <a href="#merge">merge</a>
+  <a href="#remove_point">remove_point</a>
+  <a href="#add_line">add_line</a>
+  <a href="#remove_line">remove_line</a>
+  <a href="#change_mass">change_mass</a>
+  <a href="#change_ks">change_ks</a>
+  <a href="#change_kd">change_kd</a>
+  <a href="#change_fluctuation_delta">change_fluctuation_delta</a>
+  <a href="#change_fluctuation_start">change_fluctuation_start</a>
+  <a href="#move_to">move_to</a>
+  <a href="#nop">nop</a>
+
+<u>data</u>
+  mass                mass of a point
+  x, y, z             position of a point
+  ks                  spring constant
+  kd                  spring dampening constant
+  fluctuation_delta   how much fluctuation is allowable
+  fluctuation_start   where fluctuation begins in its cycle
+  id                  a unique id for a point
+
+*** Note: id is indirect data, it is not evolved the way other parameters are.
+*** Note: All data types are doubles except id, which is an unsigned int.
+
+
+  split(id, mass, x, y, z, ks, kd, fluctuation_delta, fluctuation_start);
+  split_dup(id, mass, x, y, z, ks, kd, fluctuation_delta, fluctuation_start);
+  merge(id1, id2);
+  remove_point(id);
+  add_line(id, ks, kd, fluctuation_delta, fluctuation_start);
+  remove_line(id);
+  change_mass(delta);
+  change_ks(id, delta);
+  change_kd(id, delta);
+  change_fluctuation_delta(id, delta);
+  change_fluctuation_start(id, delta);
+  move_to(id);
+  nop();
+</pre>
+</h4>
+
+<h3>Summary</h3>
+
+<h4>
+<pre>
+    The simple instruction set is meant to be as simple a language for 
+translation directly into the construction of a creature.  The only 
+way to be simpler is to list all the points, springs, properties, and
+interconnections.
+</pre>
+</h4>
+
+<h3>Command Descriptions</h3>
+
+<h4>
+<pre>
+  <a name="split"></a>
+  split(id, mass, x, y, z, ks, kd, fd, fs);
+     unsigned int id     Each point has a unique id
+     double mass         delta from original mass
+     double x, y, z      vector from current location
+     ks                  spring constant
+     kd                  spring dampening constant
+     fd                  fluctuation delta
+     fs                  fluctuation start
+
+       split creates a new point using the point that the spider is
+     currently on.  The mass of the new point is the current point's
+     mass, plus some delta given as a parameter.  The location of the
+     new point is the location of the current point plus <x, y, z>.
+     Lastly, split creates a new point relative to the current point in
+     which a spring is generated between them with the specified
+     spring constants.
+       Once the new point is created, that point becomes the current
+     point.
+       If there is no current point, <x, y, z> are disregarded.
+
+  <a name="split_dup"></a>
+  split_dup(id, mass, x, y, z, ks, kd, fd, fs);
+     unsigned int id     Each point has a unique id
+     double mass         delta from original mass
+     double x, y, z      vector from current location
+     double ks           spring constant
+     double kd           spring dampening constant
+     double fd           fluctuation delta
+     double fs           fluctuation start
+
+       For a description, see split's description.  The only
+     deviation is that not only does the new point have a spring 
+     between itself and the current point.  For each spring 
+     connected to the current point, a spring is created between
+     the new point and the point at the other end of the spring
+     using with the same spring constants.
+
+  <a name="merge"></a>
+  merge(id1, id2);
+     unsigned int id1    The id for the current point to merge with
+     unsigned int id2    The id for the current merged point
+
+       The merge command takes the current point and the point
+     whose id was specified and &quot;merges&quot; them together.
+     The merge entails the following:
+         -Add the masses together
+         -All the springs connected to either point are shifted to
+          the new point
+         -The new point is given the specified id
+       If there is no current point, or a point does exist for id
+     given by id1, then this command does nothing.
+
+  <a name="remove_point"></a>
+  remove_point(id);
+    unsigned int id      The id for the point to move to
+
+      The remove point command removes the current point and then
+    moves to the point specified by id.  If there is no current
+    point, this command just moves to id.
+
+  <a name="add_line"></a>
+  add_line(id, ks, kd, fd, fs);
+     unsigned int id     The id for point to connect the spring to
+     double ks           spring constant
+     double kd           spring dampening constant
+     double fd           fluctuation delta
+     double fs           fluctuation start
+
+       Adds a spring between the current point and the point
+     specified by the given id.  If either of those points does
+     does not exist, then this command does nothing.
+
+  <a name="remove_line"></a>
+  remove_line(id);
+     unsigned int id     The id for point on the other end of the
+                         spring
+
+       Removes the spring between the current point and the point 
+     specified by the given id.  If either point does not exist
+     then this command does nothing.
+
+  <a name="change_mass"></a>
+  change_mass(delta);
+     double delta        Delta from the current value
+
+       Changes the mass of the current point by the given delta.
+     If the point does not exist, then this command does nothing.
+
+  <a name="change_ks"></a>
+  change_ks(id, delta);
+     unsigned int id     The id for point on the other end of the
+                         spring
+     double delta        Delta from the current value
+
+       Changes the spring constant of the spring between the
+     current point and the point specifed by id, by the given delta.
+     If the point does not exist, then this command does nothing.
+
+  <a name="change_kd"></a>
+  change_kd(id, delta);
+     unsigned int id     The id for point on the other end of the
+                         spring
+     double delta        Delta from the current value
+
+       Changes the dampening constant of the spring between the
+     current point and the point specifed by id, by the given delta.
+     If the point does not exist, then this command does nothing.
+
+  <a name="change_fluctuation_delta"></a>
+  change_fluctuation_delta(id, delta);
+     unsigned int id     The id for point on the other end of the
+                         spring
+     double delta        Delta from the current value
+
+       Changes the fluctuation delta of the spring between the
+     current point and the point specifed by id, by the given delta.
+     If the point does not exist, then this command does nothing.
+
+  <a name="change_fluctuation_start"></a>
+  change_fluctuation_start(id, delta);
+     unsigned int id     The id for point on the other end of the
+                         spring
+     double delta        Delta from the current value
+
+       Changes the fluctuation start of the spring between the
+     current point and the point specifed by id, by the given delta.
+     If the point does not exist, then this command does nothing.
+
+  <a name="move_to"></a>
+  move_to(id);
+     unsigned int id     The id for point to move to
+
+       Moves the spider to the point specified by id.  If that
+     point does not exist, then this command does nothing.
+
+  <a name="nop"></a>
+  nop();
+       This command does nothing.
+</pre>
+</h4>
+
+<div style="text-align: center;">
+<a href="languages.html">Langauges</a>
+<br>
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+</div>
+
+</body>
+</html>

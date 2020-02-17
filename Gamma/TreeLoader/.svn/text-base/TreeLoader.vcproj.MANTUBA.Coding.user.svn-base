@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioUserFile
+	ProjectType="Visual C++"
+	Version="8.00"
+	ShowAllFiles="false"
+	>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			>
+			<DebugSettings
+				Command="$(TargetPath)"
+				WorkingDirectory=""
+				CommandArguments="-f -s 10 -l 1000 -v -h Data/CD3LOSSY100KEV5KPR_ECOSTBL_OP250_8100_historic_dump.100000 -d Data/CD3LOSSY100KEV5KPR_ECOSTBL_OP250_8100_detail_pop.100000"
+				Attach="false"
+				DebuggerType="3"
+				Remote="1"
+				RemoteMachine="MANTUBA"
+				RemoteCommand=""
+				HttpUrl=""
+				PDBPath=""
+				SQLDebugging=""
+				Environment=""
+				EnvironmentMerge="true"
+				DebuggerFlavor="0"
+				MPIRunCommand=""
+				MPIRunArguments=""
+				MPIRunWorkingDirectory=""
+				ApplicationCommand=""
+				ApplicationArguments=""
+				ShimCommand=""
+				MPIAcceptMode=""
+				MPIAcceptFilter=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			>
+			<DebugSettings
+				Command="$(TargetPath)"
+				WorkingDirectory=""
+				CommandArguments="-f -s 10 -l 1000 -v -h Data/CD3LOSSY100KEV5KPR_ECOSTBL_OP250_8100_historic_dump.100000 -d Data/CD3LOSSY100KEV5KPR_ECOSTBL_OP250_8100_detail_pop.100000"
+				Attach="false"
+				DebuggerType="3"
+				Remote="1"
+				RemoteMachine="MANTUBA"
+				RemoteCommand=""
+				HttpUrl=""
+				PDBPath=""
+				SQLDebugging=""
+				Environment=""
+				EnvironmentMerge="true"
+				DebuggerFlavor="0"
+				MPIRunCommand=""
+				MPIRunArguments=""
+				MPIRunWorkingDirectory=""
+				ApplicationCommand=""
+				ApplicationArguments=""
+				ShimCommand=""
+				MPIAcceptMode=""
+				MPIAcceptFilter=""
+			/>
+		</Configuration>
+	</Configurations>
+</VisualStudioUserFile>

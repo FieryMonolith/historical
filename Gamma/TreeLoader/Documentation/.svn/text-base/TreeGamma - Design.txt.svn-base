@@ -1,0 +1,44 @@
+TreeGamma - Design
+
+Overview
+
+    TreeGamma is a program to calculate the gamma value of a phylogenetic 
+tree.  The gamma value is a metric for the distance of the internode relative 
+to the head and leaf nodes.  Currently, the program will be tied to Avida 
+data but the algorithm should be generic enough to apply to any data assuming 
+the time units work out with the underlying formulas.
+
+
+Components
+
+1. Organism - The organism component is a class meant to hold the data for an 
+     Avida organism.  It is purely a data storage unit.
+     
+2. TreeNode - The TreeNode component is a class meant to store data that will  
+     be used to construct a tree.
+
+3. Tree - The tree will represent a phylogenetic tree.
+
+
+    I am thinking now that I need to disambiguate the organism data from the 
+tree in so much as the current organism data is Avida specific.  Then either 
+the tree can store an interface for an organism or use templates to make that 
+specification.  Then the loading of the input files can be separated into 
+two distinct parts the loading of system specific information into a list 
+of organisms and then the building of the tree from that list.  Then instead 
+of having the tree have functions for anaylsis, make those functions 
+something that works on trees.
+
+
+
+Thoughts-
+
+1. Access a balanced tree - O log N
+   Insert a balanced tree - O log N
+2. Phylogenetic trees are not necessarily balanced
+
+Minimum required space to hold all of the organisms' data.  
+
+
+Organism data
+Phylogenetic tree data

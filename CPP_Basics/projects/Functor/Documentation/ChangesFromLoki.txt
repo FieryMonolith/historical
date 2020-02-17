@@ -1,0 +1,65 @@
+These are most of the changes that I can remember from the Loki version:
+
+Type
+-Broke type info headers into their own subsystem structure
+-I put all the type files under a new namespace nType
+-Added these headers to a new subsystem structure which includes some of
+ my own headers for various things.
+-Added two new headers that are used by the functor classes to store their
+ entities and bound/return types.  These classes are PtrAccessibleType and
+ ReassignableType.
+
+Functor
+-Moved Functor into its own subsystem structure
+-Broke up the Functor file into multiple files
+-Changed the namespace to nFunctor
+-Changed Functor to GenericFunctor, though I suppose I could change it back
+ and call the new Functor class, ExplicitFunctor.
+-Created a new Functor which is a more explicit version of the generic one
+-Renamed the Impl stuff to iFunctor to signify that it is an interface rather
+ than an implementation detail.
+-Changed iFunctor to be strictly an interface
+-Tried to change the inheritance of typedefs from iFunctor and iFunctorBase.
+ However, it is mostly the same because I had to change it back when I
+ discovered that gcc does not handle using typename correctly.  I also had to
+ change some template parameter names because gcc does not handle inheriting
+ template names that are the same as the derived class's version.
+-Removed SmallObjectAllocation from GenericFunctor and added a generic
+ Allocation template parameter instead.  You can just pass in SmallObjectAlloc
+ if you want.  The allocation defaults to an empty class.
+-Moved comparisons out of the functor classes and made them non-member,
+ non-friend functions.
+-Removed the RTTI stuff.  All functors are compariable for equivalence except
+ iFunctors and GenericFunctors.  If we want to add RTTI comparisons for the
+ functor types, it would be best if they were handled like the other
+ comparisons, as non-member, non-friend functions.  I may add them in later
+ anyways, but just hadn't decided how I wanted to do it yet.  The same goes
+ for reverse cloning through iFunctor.
+-Changed all functors so they allow value, reference, and pointer versions of
+ callable entities.
+-Pointer callable entities will throw a BadCallableEntity exception if the
+ pointer is null.
+-Changed the methods for accessing the interface for all functors to casting,
+ or two get methods, one for a pointer and one for a reference.
+-Added some comments
+-Added a test function for all the functors
+-Kept BinderFirst and Chainer in line with the other functors.  They are now
+ solely dependent on iFunctor.
+-Modified the BindFirst and Chain functions
+-Swapped the names of the Chainer class and Chain functions
+-Functor is similar to FunctionHandler class
+-MemberFunctionWrapper is based on the MemFunHandler class
+-Added ParmState which acts like a functor but stores the data internally, then
+ provides an execution method that takes a callable entity and executes it with
+ the saved data.  This is essentially a work in progress.
+-Added OneToMany functor, which is similar to Chain but allows for dynamic
+ chaining of callable entities.  This class comes with the iStorageType.h
+ supporting file.  I am not sure if I want to keep iStorageType.h here or move
+ it to another subsystem.  Also, I don't like iStorageType and will probably
+ change it in the near future.
+-Added ReturnlessMemFunWrap
+-I started calling the TypeList versions of things recursive and Seq versions
+ linear, in the comments.
+-Added const to the operator()s to enable const entities and const methods.
+ See documentation (iFunctor comments or FunctorInfo.txt) for more details.
+-Store data differently

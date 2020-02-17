@@ -1,0 +1,51 @@
+The Comm subsystem is intended to encapsulate a variety of structures and
+  algorithms to foster communication in and between programs and code.
+  
+Connection- Connection utilizes the Functor subsystem in an attempt to
+  replicate the QT signal/slot functionality without the use of moc.  The
+  method chosen was to rely on managing code to manage the creation and
+  destruction between a signal(OneToMany functor) and a slot (any callable
+  entity).  The Connection class includes three types of calls: 1) Create
+  adds a callable entity to the OneToMany chain, 2) Break removes a specific
+  slot from a specific signal, and 3) BreakAll removes all the signals
+  connected to a slot and vice versa.  The primary difference between this
+  method and the QT method is that the signals and slots do NOT disconnect
+  themselves upon destruction.  To do so would require the creation of near
+  identical functionality to the functors and reduces the flexibility of the
+  method at least on the part of the slots who may be a simple function with
+  no ability to control itself unlike a callable class.
+
+None of these functions require the return type.  That is because each
+  callable entity is stored in a ReturnlessFunctor which essentially
+  strips off the return value.
+
+The working of this system relies on the ability to identify signals and
+  slots.  To do this I utilize the void* as a sort of identifier.  By
+  casting each incoming item to a void* should give you a unique value for
+  pointers and references under the assumption that what they refer to
+  remain valid while they are connected.  However, I am not sure if this
+  assumption holds for entities passed by value, since it could be feasible
+  that the compiler would reuse temporary storage on multiple calls.
+  While I could have prevented the use of entities by value, I thought I
+  would leave them in on the off chance someone has a use for them I have
+  not thought of.  Also, it means that pass by value entites can not
+  be disconnected except by doing a BreakAll on a signal since it is not
+  possible to look them up as their ids would not be valid.
+
+Also, I am not certain what happens on every system if the static data is
+  not disconnected.  I assume from what I have learned before that the
+  system will clean up any allocated data a program does not clean up itself.
+  The reason for this issue is that each connection creates new instances
+  of Returnless functors and stores them in a static list composed of
+  void pointers.  This means that any given piece of data can not be
+  deleted by an unknowing third party since you can not delete a void *
+  and still call the original destructor.  Though there is a chance that
+  I could rethink the void* thing for the storage of Returnless types and
+  store them as iFunctors, thus making it possible to delete them.
+  Otherwise, I would have to make the Connection class templated and each
+  parameter list signature would cause that many static lists of signals
+  and slots instead of one.  While this would maintain type information
+  directly, it would also potentially bump up the static memory overhead
+  of the program.  Though that increase may be insignificant.  This method
+  may only need to be changed if a system is encountered that does not free
+  up memory for a program upon termination.

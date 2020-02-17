@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>WhirlingDervish Physics</title>
+</head>
+<body style="color: rgb(51, 255, 51); background-color: rgb(0, 0, 0);">
+
+<div style="text-align: center;">
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+</div>
+
+<h2>Physics</h2>
+<h3>Quick Reference</h3>
+
+<h4>
+<pre>
+<u>Functions</u>
+<a href="#CalculateFrictionalForce">CalculateFrictionalForce</a>
+<a href="#CalculateAirResistance">CalculateAirResistance</a>
+<a href="#CalculateGravitationalForce">CalculateGravitationalForce</a>
+<a href="#Verlet">Verlet</a>
+<a href="#SpringForce">SpringForce</a>
+
+*Note:  All functions return void
+CalculateFrictionalForce(double staticMu, double kineticMu, double mass,
+                         const Vector3d &force, const Vector3d &velocity,
+                         Vector3d &frictionalForce)
+
+CalculateAirResistance(double drag, const Vector3d &velocity,
+                       Vector3d &resistanceForce)
+
+CalculateGravitationalForce(double mass, const Vector3d &gravity,
+                            Vector3d &gravitationalForce)
+
+Verlet(Vector3d &curPos, Vector3d &prevPos, const Vector3d &force, double mass,
+       double timeStep)
+
+SpringForce(Vector3d &force0, Vector3d &force1,
+            const Vector3d &p0, const Vector3d &prevP0,
+            const Vector3d &p1, const Vector3d &prevP1,
+            double ks, double kd, double innate_length,
+            double timeStep)
+
+</pre>
+</h4>
+
+<h3>Summary</h3>
+
+<h4>
+<pre>
+    All the functions in this library pertain directly to the physics required
+to simulate the creatures of WhirlingDervish.  No function has access to
+outside, environment, or simulation information.  All necessary information
+must be passed into each function.  The class that encapsulates these
+functions holds no state information, and each function is a static class
+method.  All the functions also return void, so any data that should come
+out of the function should be retrieved by pointer or reference as a
+parameter of the function.
+</pre>
+</h4>
+
+<h3>Function Descriptions</h3>
+
+<h4>
+<pre>
+<a name="CalculateFrictionalForce"></a>
+static void CalculateFrictionalForce(staticMu, kineticMu, mass, force,
+                                     velocity, frictionalForce)
+  double staticMu, kineticMu   properties of the resistive material
+  double mass                  mass of the point-mass
+  const Vector3d &force        current forces acting on the point-mass
+  const Vector3d &velocity     velocity of the point-mass
+  Vector3d &frictionalForce    return the force calculated by this function
+
+  Summary:
+      This function calculates the frictional force a resistive material
+  imparts on a point-mass, or any other shape independant objects that can
+  be considered a point-mass.
+
+  Units: meter, sec, kilogram
+
+  Algorithm:
+    weight = 9.8 * mass
+    Vector3d v = < velocity[0], 0, velocity[2] >
+    Vector3d f = < force[0], 0, force[2] >
+
+    vmag = Normalize(v)
+    fmag = Normalize(f)
+
+    if(vmag == 0 && fmag == 0) {
+      frictionalForce = <0, 0, 0>
+    } else if(vmag == 0 && fmag < staticMu * weight) {
+      frictionalForce = <-f[0], 0, -f[2]>
+      frictionalForce *= fmag
+    } else {
+      frictionalForce = <-v[0], 0, -v[2]>
+      frictionalForce *= kineticMu * weight
+    }
+
+
+<a name="CalculateAirResistance"></a>
+static void CalculateAirResistance(drag, velocity, resistanceForce)
+  double drag                 the coefficient of drag
+  const Vector3d &velocity    the velocity of the point-mass
+  Vector3d &resistanceForce   return the force calculated by this function
+
+  Summary:
+      This function calculates the frictional force a resistive material
+  imparts on a point-mass, or any other shape independant objects that can
+  be considered a point-mass.  It essentially finds the opposite direction
+  of the velocity vector, then the magnitude equals drag * (||v||)^2.
+
+  Units: meter, sec
+
+  Algorithm:
+    resistanceForce = velocity
+    mag = Normalize(resistanceForce)
+
+    resistanceForce *= -1
+    resistanceForce *= mag * mag
+    resistanceForce *= drag
+
+
+<a name="CalculateGravitationalForce"></a>
+static void CalculateGravitationalForce(mass, gravity, gravitationalForce)
+  double mass                    mass of the point-mass
+  const Vector3d &gravity        direction and magnitude of gravity
+  Vector3d &gravitationalForce   returns the force calculated by this function
+
+  Summary:
+      This function calculates the force of gravity on a point-mass.  This
+  should be changed to allow for alternate gravitational pulls.  Simply add
+  a vector representing the direction and magnitude of the force.
+
+  Units: meter, sec, kilogram
+
+  Algorithm:
+    gravitationalForce = gravity
+    gravitationalForce *= mass
+
+
+<a name="Verlet"></a>
+static void Verlet(curPos, prevPos, force, mass, timeStep)
+  Vector3d &curPos        current postion of the point-mass
+  Vector3d &prevPos       previous position of the point-mass
+  const Vector3d &force   current force acting on the point-mass
+  double mass             mass of the point-mass
+  double timeStep
+
+  Summary:
+      This is a function I found on the web.  It is supposed to be better
+  than the typical movement because it doesn't store the velocity.  If you
+  store the velocity, errors can compound more quickly.  So I recalculate
+  the velocity by using the current and previous position.  The basic
+  function for movement is
+    x = x_0 + (v_0 * t) + (0.5 * a * t^2).
+  However, since I am considering each timestep independantly, v_0 becomes v
+  where
+    v = (p - p_prev)/t
+  which is delta x over delta t.  Now the function becomes
+    x_new = x + ((x - x_prev) / t) * t + (0.5 * a * t^2)
+  which is now
+    x_new = 2*x - x_prev + (0.5 * a * t^2).
+  Since, F = ma, a = F / m so the function becomes
+    x_new = 2*x - x_prev + (0.5*f*(t^2))/m
+
+  Units: meter, sec, kilogram
+
+  Algorithm:
+    temp = curPos
+    curPos = (2.0 * curPos) - prevPos + ((0.5 * force * timeStep * timeStep) /
+                                         mass)
+    prevPos = temp
+
+
+<a name="SpringForce"></a>
+static void SpringForce(force0, force1, p0, prevP0, p1, prevP1,
+			ks, kd, innate_length,
+                        timeStep)
+  Vector3d &force0, &force1     returned forces on point-mass one and two
+  const Vector3d &p0, &prevP0   position and previous position of point-mass 1
+  const Vector3d &p1, &prevP1   position and previous position of point-mass 2
+  double ks                     spring constant
+  double kd                     dampening constant
+  double innate_length          rest length of the spring
+  double timeStep
+
+  Summary:
+      This function calculates the force applied to the point-mass on each
+  end of the spring.  The function handles the case if the current spring
+  length is zero.
+
+  Units: meter, sec
+
+  Algorithm:
+    Vector3d force = p1 - p0
+    lineLength = Normalize(force)
+
+    if(lineLength == 0) {
+      Vector3d velocity = ((p1 - prevP1)/timeStep) - ((p0 - prevP0)/timeStep)
+      vmag = Normalize(velocity)
+      if(vmag == 0) {
+        // Can't do anything, so just return
+      }
+
+      // Need direction for force
+      force = velocity
+    }
+
+    force *= ks * (lineLength - innateLength)
+
+    force0 = force
+    force1 = -force
+
+<div style="text-align: center;">
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+8
+
+dir
+22
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL/Mockup/ResearchSamples
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL
+
+
+
+2009-09-25T06:37:27.970706Z
+1
+jasonstr
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5d0ca588-a99d-11de-9729-afbd3562f073
+
+xwindow_sample.cpp
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+777a1c930de977699ccec71dcb7cbf0a
+2009-09-25T06:37:27.970706Z
+1
+jasonstr
+
+win32_sample.cpp
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+61d0a67709bd44d30d50dae0e644633d
+2009-09-25T06:37:27.970706Z
+1
+jasonstr
+

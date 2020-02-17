@@ -1,0 +1,7 @@
+CFLAGS = -I../ -O2 -Wall
+
+test_all:
+	g++32 $(CFLAGS) -o Binaries/test_all.32 Tests/test_all.cpp
+
+clean:
+	rm -f Binaries/*

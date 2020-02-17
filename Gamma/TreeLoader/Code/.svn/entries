@@ -1,0 +1,73 @@
+8
+
+dir
+11
+svn+ssh://jasonstr@www.jasonstredwick.net/home1/jasonstr/svn/Bioinformatics/PhylogeneticTree/Gamma/Trunk/TreeLoader/Code
+svn+ssh://jasonstr@www.jasonstredwick.net/home1/jasonstr/svn/Bioinformatics
+
+
+
+2009-11-05T19:58:09.625466Z
+11
+jasonstr
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+cf77015e-9f25-11de-ab64-e023f96adf68
+
+Organisms
+dir
+
+main.cpp
+file
+
+
+
+
+2009-11-05T19:59:50.000000Z
+6e510ef794794ddddd4d80a9c426bdac
+2009-11-05T19:58:09.625466Z
+11
+jasonstr
+
+ProgramInterface.cpp
+file
+
+
+
+
+2009-11-05T19:59:50.000000Z
+be287676053b8c14d9b82233844800e7
+2009-11-05T19:58:09.625466Z
+11
+jasonstr
+
+PhylogeneticTree
+dir
+
+Support
+dir
+
+ProgramInterface.h
+file
+
+
+
+
+2009-11-05T19:59:50.000000Z
+c459989d6b24938e3357e0dbfb9d8a6f
+2009-11-05T19:58:09.625466Z
+11
+jasonstr
+

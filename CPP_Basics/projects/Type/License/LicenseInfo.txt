@@ -1,0 +1,5 @@
+There are two licenses because part of this subsystem is comprised from code
+written and maintained as part of the loki-lib library.  The other code I wrote
+and falls under the Boost 1.0 license.  While both licenses give essentially
+the same allowances, I keep both licenses with this group and the headers
+each contain their correct license information.

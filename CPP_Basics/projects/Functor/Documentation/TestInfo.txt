@@ -1,0 +1,17 @@
+test_all.cpp
+
+This test program does all of the following to ensure the classes are working:
+1. Goes through Functor, MemberFunctionWrapper, GenericFunctor, BinderFirst,
+   Chain, OneToMany, and ReturnlessFunctor and verifyies that all 15 of
+   the operator() are in working order, ie there are no typos or duplicated
+   parameter passing.  To this end, each function prints out a successive
+   string of characters starting with 'a' and progressively gets longer
+   through 'o'.  If any of the fifteen fail or have incorrect sequential string
+   of characters there is probably an error.  It does this test for both Seq
+   versions, after Typelist have been verified.
+   
+2. Next I go through each of the functor classes mentioned above and test
+   the rest of their interface.  This includes copy construction, destruction,
+   cloning, assignment, comparison, accessing their interface, etc.  This
+   also includes any special interface options a given functor may have but
+   not the others such as OneToMany.

@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TempleAndFountain", "TempleAndFountain.vcproj", "{F184759D-C619-44E2-8693-060CDBA4083F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenerateModels", "..\GenerateModels\GenerateModels.vcproj", "{98DCE1C6-79A5-44B9-A00C-CB91C3C0E78D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{E720F89B-2DC9-41D8-A0AB-6A6FE160C967}"
+	ProjectSection(SolutionItems) = preProject
+		..\InterfaceReadme.txt = ..\InterfaceReadme.txt
+		LICENSE_1_0.txt = LICENSE_1_0.txt
+		..\ProjectSummary.txt = ..\ProjectSummary.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F184759D-C619-44E2-8693-060CDBA4083F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F184759D-C619-44E2-8693-060CDBA4083F}.Debug|Win32.Build.0 = Debug|Win32
+		{F184759D-C619-44E2-8693-060CDBA4083F}.Release|Win32.ActiveCfg = Release|Win32
+		{F184759D-C619-44E2-8693-060CDBA4083F}.Release|Win32.Build.0 = Release|Win32
+		{98DCE1C6-79A5-44B9-A00C-CB91C3C0E78D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{98DCE1C6-79A5-44B9-A00C-CB91C3C0E78D}.Debug|Win32.Build.0 = Debug|Win32
+		{98DCE1C6-79A5-44B9-A00C-CB91C3C0E78D}.Release|Win32.ActiveCfg = Release|Win32
+		{98DCE1C6-79A5-44B9-A00C-CB91C3C0E78D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

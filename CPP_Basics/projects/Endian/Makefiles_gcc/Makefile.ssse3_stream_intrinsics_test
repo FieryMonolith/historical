@@ -1,0 +1,22 @@
+CC =	g++
+LD =	g++
+CODE_DIR = Tests/SSSE3_Stream_Intrinsics
+
+OBJECTS = Objs/SSSE3_Stream_Intrinsics_Test.o
+
+all: Bin/SSSE3_Stream_Intrinsics_Test
+
+Bin/SSSE3_Stream_Intrinsics_Test:	$(OBJECTS)
+	$(LD) -o $@ $(OBJECTS)
+
+Objs/SSSE3_Stream_Intrinsics_Test.o: 	Interface/Endian.h \
+					Interface/Endian_SSSE3.h \
+					Include/QuantityUnits.h \
+					Include/Alignment.h \
+					Include/Pointer.h \
+					Include/SSSE3.h \
+					$(CODE_DIR)/SSSE3_Stream_Intrinsics_Test.cpp
+	$(CC) -mfpmath=sse -mssse3 -I Interface -I Include -o $@ -c $(CODE_DIR)/SSSE3_Stream_Intrinsics_Test.cpp
+
+clean:
+	rm $(OBJECTS); rm Bin/SSSE3_Stream_Intrinsics_Test; find . -name '*~' -exec rm -f {} \;

@@ -1,0 +1,52 @@
+8
+
+dir
+22
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL/Mockup/VS2005/PaintGL
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL
+
+
+
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5d0ca588-a99d-11de-9729-afbd3562f073
+
+PaintGL.vcproj
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+3ccc2995442d5c1abe596fecd9618221
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+PaintGL.vcproj.Hyboria.Programming.user
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+a976ee70843e82ae173ed2affd2063ad
+2009-10-01T22:41:49.361411Z
+5
+jasonstr
+

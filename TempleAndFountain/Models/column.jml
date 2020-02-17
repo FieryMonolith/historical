@@ -1,0 +1,40 @@
+TYPE COMPOSITE
+NAME Column
+
+#Base
+MODEL_FILE Models/column_base_top.jml Textures/grey_marble_512_512.bmp 0.0 12.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 0.0 6.0 -36.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp -36.0 6.0 0.0 -1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 0.0 6.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 36.0 6.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0
+
+#Disks
+MODEL_FILE Models/column_largering_outside.jml 0.0 15.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_largering_top.jml 0.0 18.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_cylinder_between_wheels.jml 0.0 21.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_flute_ring.jml 0.0 21.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/column_smallring_outside.jml 0.0 22.5 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+
+#Fluted columns
+MODEL_FILE Models/column_flute_ring.jml 0.0 24.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/column_fluted3.jml 0.0 60.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_fluted1.jml 0.0 96.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_fluted3.jml 0.0 132.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_fluted1.jml 0.0 168.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_fluted2.jml 0.0 204.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_flute_ring.jml 0.0 204.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+
+#Disks Again
+MODEL_FILE Models/column_smallring_outside.jml 0.0 205.5 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_flute_ring.jml 0.0 207.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_cylinder_between_wheels.jml 0.0 210.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_largering_top.jml 0.0 210.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/column_largering_outside.jml 0.0 213.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+
+#Base Again
+MODEL_FILE Models/column_base_top.jml Textures/grey_marble_512_512.bmp 0.0 216.0 0.0 0.0 -1.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 0.0 222.0 -36.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp -36.0 222.0 0.0 -1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 0.0 222.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/column_base_side.jml Textures/grey_marble_512_512.bmp 36.0 222.0 0.0 1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/column_cap.jml Textures/grey_marble_512_512.bmp 0.0 228.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0

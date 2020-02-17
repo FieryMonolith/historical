@@ -1,0 +1,94 @@
+8
+
+dir
+22
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL/Mockup/External/sSystem/Include
+svn+ssh://jasonstredwick.net/home1/jasonstr/svn/PaintGL
+
+
+
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5d0ca588-a99d-11de-9729-afbd3562f073
+
+MSC
+dir
+
+XWindows
+dir
+
+OpenglSurface.h
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+83490108770002c7ec42fa220ad5a2f3
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+Keyboard.h
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+658e02084e8c016523808dbe9110b008
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+System.h
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+427c2771299d244570da5a5136be8996
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+iSurface_System.h
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+7ed501eb6bbce2b06a2ea1c610cc2b56
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+
+Mouse.h
+file
+
+
+
+
+2010-04-01T16:22:26.000000Z
+ccedcf38203a67769dd4e73d92a0188f
+2010-03-29T02:19:44.314045Z
+21
+jasonstr
+

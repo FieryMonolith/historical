@@ -1,0 +1,21 @@
+# FILE filename                               x   y z
+FILE ../Input/Images/FreeDrawOff.bmp          0 455 1   # 0
+FILE ../Input/Images/FreeDrawOn.bmp           0 455 0   # 1
+FILE ../Input/Images/FreeDrawTooltip.bmp      0 455 2   # 2
+FILE ../Input/Images/LineDrawOff.bmp          0 430 1   # 3
+FILE ../Input/Images/LineDrawOn.bmp           0 430 0   # 4
+FILE ../Input/Images/LineDrawTooltip.bmp      0 430 2   # 5
+FILE ../Input/Images/RectangleDrawOff.bmp     0 405 1   # 6
+FILE ../Input/Images/RectangleDrawOn.bmp      0 405 0   # 7
+FILE ../Input/Images/RectangleDrawTooltip.bmp 0 405 2   # 8
+FILE ../Input/Images/EllipseDrawOff.bmp       0 380 1   # 9
+FILE ../Input/Images/EllipseDrawOn.bmp        0 380 0   # 10
+FILE ../Input/Images/EllipseDrawTooltip.bmp   0 380 2   # 11
+
+# TEXTURE_COLOR R   G   B alpha width height           name  x   y z
+TEXTURE_COLOR  50  50  50   255   256    256 DrawingSurface 25 224 0   # 12
+TEXTURE_COLOR 255   0   0   255    25     25            Red  0   0 0   # 13
+TEXTURE_COLOR   0 255   0   255    25     25          Green 25   0 0   # 14
+TEXTURE_COLOR   0   0 255   255    25     25           Blue 50   0 0   # 15
+
+FILE ../Input/Images/Close.bmp 615 455 0 # 16

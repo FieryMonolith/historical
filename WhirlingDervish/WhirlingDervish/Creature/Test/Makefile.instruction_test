@@ -1,0 +1,30 @@
+MOCDIR	= .
+OBJDIR	= .
+
+HEADERS =	\
+	../Include/instruction_set.h
+SOURCES =	\
+	../Src/instruction_set.cpp \
+	./instruction_test.cpp
+
+all: instruction_test
+
+instruction_test:	instruction_test.makefile
+	make -f instruction_test.makefile
+
+instruction_test.makefile:	instruction_test.pro
+	qmake -makefile -o instruction_test.makefile \
+	instruction_test.pro -after \
+	"INCLUDEPATH += ../Interface" \
+	"INCLUDEPATH += ../Include" \
+	"CONFIG += debug" \
+	"DESTDIR = ."
+
+instruction_test.pro:
+	qmake -project -nopwd -norecursive -o instruction_test.pro \
+	"OBJECTS_DIR += $(OBJDIR)" "MOC_DIR += $(MOCDIR)" \
+	$(HEADERS) $(SOURCES)
+
+clean:
+	rm -f *.o; rm -f instruction_test.pro; \
+	rm -f instruction_test.makefile; rm -f *~; rm -f instruction_test

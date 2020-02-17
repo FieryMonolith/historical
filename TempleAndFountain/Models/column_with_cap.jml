@@ -1,0 +1,4 @@
+TYPE COMPOSITE
+NAME ColumnWithCap
+MODEL_FILE Models/column.jml
+MODEL_FILE Models/cap.jml 0.0 228.0 0.0

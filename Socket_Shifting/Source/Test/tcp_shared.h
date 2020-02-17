@@ -1,0 +1,18 @@
+#ifndef __TCP_SHARED_H__
+#define __TCP_SHARED_H__
+
+#define SERVER1_IP "35.9.24.177"
+#define SERVER1_PORT 43828
+#define SERVER2_IP "35.9.42.215"
+#define SERVER2_PORT 43830
+
+#define BUFFER_SIZE 256
+#define DONE_STRING "7777777=DONE=7777777=\n"
+#define DONE_COMPARE_STRING "7777777=DONE=7777777="
+#define MOVE "7777777=MOVE_SOCKET=127.0.0.1:13830=%s=7777777=\n"
+#define MOVING "MOVING_SOCKET"
+#define MOVE_OK "7777777=MOVE_OK=7777777=\n"
+#define DATA1 "server1.txt"
+#define DATA2 "server2.txt"
+
+#endif

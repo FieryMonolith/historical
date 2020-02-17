@@ -1,0 +1,35 @@
+MOCDIR	= .
+OBJDIR	= .
+
+HEADERS =	\
+	../Include/instruction_set.h \
+	../Include/genome.h \
+	../../../System/Tools/Interface/random.h
+
+SOURCES =	\
+	../../../System/Tools/Src/random.cpp \
+	../Src/instruction_set.cpp \
+	../Src/genome.cpp \
+	./genome_test.cpp
+
+all: genome_test
+
+genome_test:	genome_test.makefile
+	make -f genome_test.makefile
+
+genome_test.makefile:	genome_test.pro
+	qmake -makefile -o genome_test.makefile \
+	genome_test.pro -after \
+	"INCLUDEPATH += ../Interface" \
+	"INCLUDEPATH += ../Include" \
+	"CONFIG += debug" \
+	"DESTDIR = ."
+
+genome_test.pro:
+	qmake -project -nopwd -norecursive -o genome_test.pro \
+	"OBJECTS_DIR += $(OBJDIR)" "MOC_DIR += $(MOCDIR)" \
+	$(HEADERS) $(SOURCES)
+
+clean:
+	rm -f *.o; rm -f genome_test.pro; \
+	rm -f genome_test.makefile; rm -f *~; rm -f genome_test

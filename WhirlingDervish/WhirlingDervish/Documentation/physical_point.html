@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>WhirlingDervish: Physical Point</title>
+</head>
+<body style="color: rgb(51, 255, 51); background-color: rgb(0, 0, 0);">
+
+<div style="text-align: center;">
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+<br>
+<a href="constructs.html">Constructs</a>
+&nbsp;&nbsp;
+<a href="spring.html">Spring</a>
+&nbsp;&nbsp;
+<a href="shape_engine.html">Shape Engine</a>
+&nbsp;&nbsp;
+<a href="constraints.html">Constraints</a>
+</div>
+
+<h2>Physical Point</h2>
+
+<h3>Summary</h3>
+<h4>
+<pre>
+    The PhysicalPoint class represents a simple point-mass for simulation.  It
+primarily holds data that characterizes a point-mass, with basic methods to
+manipulate those data members.  The constructor can be a default constructor or
+take values for most of the data members.  Note that when you initialize
+using the position, the class considers the previous and current position to
+be the same.
+</pre>
+</h4>
+
+<h3>Data member description</h3>
+
+<h4>
+<pre>
+position               The position of the point-mass in space
+previous position      The previous position of the point-mass in space.  This
+                       is used to determine velocity given a timestep
+static mu              Coefficient of friction used when the point-mass is not
+                       moving
+kinetic mu             Coefficient of friction used when the point-mass is in
+                       motion
+drag                   Coefficient used in determining the drag force applied
+                       to the point mass
+</pre>
+</h4>
+
+<h3>Header</h3>
+
+<h4>
+<pre>
+class PhysicalPoint {
+public:
+  PhysicalPoint(const Vector3d &position = Vector3d(0.0, 0.0, 0.0),
+		double mass      =PhysicalPointConstraints::DEFAULT_MASS,
+		double staticMu  =PhysicalPointConstraints::DEFAULT_STATIC_MU,
+		double kineticMu =PhysicalPointConstraints::DEFAULT_KINETIC_MU,
+		double drag      =PhysicalPointConstraints::DEFAULT_DRAG);
+  PhysicalPoint(const PhysicalPoint &);
+  ~PhysicalPoint(void);
+
+  PhysicalPoint &operator=(const PhysicalPoint &);
+
+  double  Mass(void)      const { return d_mass;      }
+  double &Mass(void)            { return d_mass;      }
+  double  Drag(void)      const { return d_drag;      }
+  double &Drag(void)            { return d_drag;      }
+  double  StaticMu(void)  const { return d_staticMu;  }
+  double &StaticMu(void)        { return d_staticMu;  }
+  double  KineticMu(void) const { return d_kineticMu; }
+  double &KineticMu(void)       { return d_kineticMu; }
+
+  void ChangeMass(double deltaMass) { d_mass += deltaMass; }
+
+  const Vector3d &Position(void)         const { return d_curPos;  }
+        Vector3d &Position(void)               { return d_curPos;  }
+  const Vector3d &PreviousPosition(void) const { return d_prevPos; }
+        Vector3d &PreviousPosition(void)       { return d_prevPos; }
+
+  Vector3d Velocity(double timestep) {
+    if(timestep == 0) { return 0; }
+    return (d_curPos - d_prevPos) / timestep;
+  }
+
+  void AddForce(const Vector3d &force) { d_force += force; return; }
+  const Vector3d &Force(void) const { return d_force; }
+        Vector3d &Force(void)       { return d_force; }
+
+private:
+  Vector3d d_curPos;
+  Vector3d d_prevPos;
+  Vector3d d_force;
+
+  double d_mass;
+  double d_staticMu;
+  double d_kineticMu;
+  double d_drag;
+};
+</pre>
+</h4>
+
+<div style="text-align: center;">
+<a href="constructs.html">Constructs</a>
+&nbsp;&nbsp;
+<a href="spring.html">Spring</a>
+&nbsp;&nbsp;
+<a href="shape_engine.html">Shape Engine</a>
+&nbsp;&nbsp;
+<a href="constraints.html">Constraints</a>
+<br>
+<a href="WhirlingDervish.html">WhirlingDervish</a>
+</div>
+
+</body>
+</html>

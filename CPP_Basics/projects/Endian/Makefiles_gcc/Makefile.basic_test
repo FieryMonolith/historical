@@ -1,0 +1,18 @@
+CC =	g++
+LD =	g++
+CODE_DIR = Tests/Basic
+
+OBJECTS = Objs/Basic_Test.o
+
+all: Bin/Basic_Test
+
+Bin/Basic_Test:	$(OBJECTS)
+	$(LD) -o $@ $(OBJECTS)
+
+Objs/Basic_Test.o: 	Interface/Endian.h \
+			Include/QuantityUnits.h \
+			$(CODE_DIR)/Basic_Test.cpp
+	$(CC) -I Interface -I Include -o $@ -c $(CODE_DIR)/Basic_Test.cpp
+
+clean:
+	rm $(OBJECTS); rm Bin/Basic_Test; find . -name '*~' -exec rm -f {} \;

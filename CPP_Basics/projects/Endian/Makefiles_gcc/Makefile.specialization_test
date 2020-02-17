@@ -1,0 +1,19 @@
+CC =	g++
+LD =	g++
+CODE_DIR = Tests/Specializations
+
+OBJECTS = Objs/Specializations_Test.o
+
+all: Bin/Specializations_Test
+
+Bin/Specializations_Test:	$(OBJECTS)
+	$(LD) -o $@ $(OBJECTS)
+
+Objs/Specializations_Test.o: 	Interface/Endian.h \
+				Interface/Endian_Specializations.h \
+				Include/QuantityUnits.h \
+				$(CODE_DIR)/Specializations_Test.cpp
+	$(CC) -I Interface -I Include -o $@ -c $(CODE_DIR)/Specializations_Test.cpp
+
+clean:
+	rm $(OBJECTS); rm Bin/Specializations_Test; find . -name '*~' -exec rm -f {} \;

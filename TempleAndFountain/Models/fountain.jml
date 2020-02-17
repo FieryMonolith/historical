@@ -1,0 +1,10 @@
+TYPE COMPOSITE
+NAME Fountain
+MODEL_FILE Models/fountain_interior_wall.jml Textures/tile.bmp 0.0 -24.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/fountain_exterior_wall.jml Textures/grey_marble_512_512.bmp 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/fountain_floor.jml Textures/marble_512_512.bmp 0.0 -24.0 0.0 -1.0 0.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/fountain_seat_top.jml Textures/red_blotch_marble_512_512.bmp 0.0 30.0 0.0 -1.0 0.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/fountain_seat_bottom.jml Textures/grey_marble_512_512.bmp 0.0 24.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/fountain_seat_side.jml Textures/red_blotch_marble_512_512.bmp 0.0 24.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/fountain_tube.jml Textures/grey_marble_512_512.bmp 0.0 -24.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+MODEL_FILE Models/fountain_tube_cap.jml Textures/water_128_128.bmp 0.0 30.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0

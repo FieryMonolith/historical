@@ -1,0 +1,15 @@
+TYPE COMPOSITE
+NAME Cap
+
+#Generate Fancy Cap
+MODEL_FILE Models/column_with_cap_front.jml Textures/grey_marble_512_512.bmp 0.0 6.0 -36.0
+MODEL_FILE Models/column_with_cap_side.jml Textures/grey_marble_512_512.bmp 36.0 4.5 0.0 1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/column_with_cap_front.jml Textures/grey_marble_512_512.bmp 0.0 6.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/column_with_cap_side.jml Textures/grey_marble_512_512.bmp -36.0 4.5 0.0 -1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/column_with_cap_top.jml Textures/grey_marble_512_512.bmp 0.0 12.0 0.0 0.0 1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/column_with_cap_cylinder.jml Textures/grey_marble_512_512.bmp -48.0 9.0 -36.0
+MODEL_FILE Models/column_with_cap_cylinder.jml Textures/grey_marble_512_512.bmp 48.0 9.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/column_with_cap_cap.jml Textures/grey_marble_512_512.bmp -48.0 9.0 -36.0
+MODEL_FILE Models/column_with_cap_cap_reverse.jml Textures/grey_marble_512_512.bmp 48.0 9.0 -36.0
+MODEL_FILE Models/column_with_cap_cap.jml Textures/grey_marble_512_512.bmp 48.0 9.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/column_with_cap_cap_reverse.jml Textures/grey_marble_512_512.bmp -48.0 9.0 36.0 0.0 0.0 -1.0 0.0 1.0 0.0

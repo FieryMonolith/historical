@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="StaticLibrary_Debug_Win32"
+	OutputDirectory="../../Lib/"
+	IntermediateDirectory="$(ProjectDir)/"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="0"
+		AdditionalIncludeDirectories="../../Include; ../../Interface"
+		GeneratePreprocessedFile="0"
+		KeepComments="false"
+		StringPooling="true"
+		MinimalRebuild="true"
+		BasicRuntimeChecks="3"
+		SmallerTypeCheck="true"
+		RuntimeLibrary="1"
+		EnableFunctionLevelLinking="true"
+		FloatingPointExceptions="true"
+		ObjectFile="../../Objs/"
+		BrowseInformation="1"
+		WarningLevel="4"
+		Detect64BitPortabilityProblems="true"
+		DebugInformationFormat="3"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile="$(OutDir)\$(ProjectName)32d.lib"
+	/>
+</VisualStudioPropertySheet>

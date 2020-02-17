@@ -1,0 +1,55 @@
+Jason Stredwick
+
+	This is exploration 1 for cse891 Advanced Computer Graphics.  All four questions I chose 
+were merged into a single situation.  The four questions I chose to answer are: curve that touches 
+all of its control points, objects that move along a curved path with independent posing, moving 
+a polygon mesh along a path defined by a series of control points, and to deform a mesh.
+	The curve function I used in order to touch all of its control points was the Catmull-Rom 
+algorithm.  At least the one I used, is based on the Ferguson algorthm which takes two points 
+and the tangent at those points.  The Catmull-Rom is a simple extension of the Ferguson algorithm 
+in that it computes the tangents for you by taking two additional control points instead of explicitly
+using tangents.  The extra control points are supposed to be to the left and right of the primary control 
+points.  The tangents at the primary control points are computed by subtracting the point on its 
+right from the point on its left creating a tangent line.  Thus if the points are p_left, p0, p1, p_right, 
+then the tangent at p0 is (p1 - p_left) / 2 and at p1 is (p_right - p0) / 2.
+	Most implementations state that it requires a minimum of four control points, however 
+this is not true.  Three is the minimum number of required control points.  The reason for this is 
+that this algorithm does not handle the end control points well.  Special cases are required to 
+handle them.  The way I decided to handle the end control points is two break it into two cases: 
+control points that loop, and those that do not loop.  If the control points loop, the minimum required 
+number of control points is three in that for the two primary points they share the same point as their 
+right and left points.  Thus if you have the points p0, p1, and p2, and computing the curve between 
+p0 and p1 you would call the Catmull-Rom algorithm with p2, p0, p1, p2.  If the control points do 
+not loop, then I extrapolate the to the left or right respectively.  The following is the calculation for 
+the left and right points should they both need to be extrapolated: p_left = p0 + (p0 - p1)/2 and 
+p_right is p1 + (p1 - p0)/2.
+	For the representation of the spheres from Phantasm(exploration requirement), I use the 
+Catmull-Rom algorithm to generate a corkscrew path for the spheres to follow.  The spheres take a start 
+and end position where the start position denotes the local origin of the path and the end position is 
+where it should go.  Each death sphere is a sphere with a cylinder, scaled to a cone shape, coming out 
+of it.  The sphere moves along the corkscrew path and its orientation is determined by its current 
+location and the end position.  A matrix is computed to determine this orientation based on those two 
+values.
+	For the moving tube portion of the exploration, I generate a simple tube using control points 
+and the Catmull-Rom algorithm.  The path loops over a set of control points and uses the 
+Catmull-Rom algorithm to compute the actual curve.  The tube is created by breaking it down into 
+segments.  Each segment is a specific distance along the path of motion behind the front of the tube.
+Each segment is then subdivided into rings whose centers fall on the path of motion and oriented in 
+the direction of the tangent of the path at that location.  Each circle is subdivided into a number 
+of vertices and these vertices are connected to those in the rings following and preceeding rings to
+form a triangle mesh.
+	For the deformation portion of the exploration, I did not use a facial model but used my mesh 
+tube from the other question.  The scenario devised takes two cylinders with a distance between 
+them that is smaller than the width of the tube.  To make this scenario more visible, The collision 
+volumes for the cylinders are larger than the actual cylinders.  This allows you to view the 
+deformation easily without looking like the tube was just going right through the cylinders.  To do 
+the deformation, I first compute a triangle's coordinates.  Then I test for intersection of these new 
+points with the cylinders based on the origin of the curve, since the control points form a circular 
+type curve.  If a new point would have intersected the cylinder, the point is adjusted to be at the 
+location where the ray from that point from the curve origin would have intersected the cylinder.  
+Using these adjusted points, you get the affect that the tube is deforming between the two 
+cylinders.
+
+* Please note that I did not complete the ant skeleton question.  While the code is available for
+its current state, it must be part of the Visual Studio project or it will crash due to some
+internal MFC error.

@@ -1,0 +1,17 @@
+    In this project I am expected to take a number of input files containing 
+organism information.  For now there are only two files the historic and 
+the detail.  They both contain needed organism data but the detail file 
+also contains the population of organisms that are currently alive at the 
+given timepoint.
+
+X 1. Need to identify and handle duplicate ids
+X 2. Be able to prune leaf nodes and their branches that only exist in the 
+      historic file.
+X 3. Be able to identify and remove all non-leaf organisms from the final 
+     population, but leave them in the tree itself.  Basically, they should 
+     not be considered leaf nodes just because they exist in the final
+     population. (As per Gabe's request).  Need to think about the implication
+     of this in relation to the formulas we are using.
+  4. Handle the possibility of multiple tree heads?  This could potentially 
+     creep up if there is a disconnect along a branch between a leaf and the
+     whole tree.

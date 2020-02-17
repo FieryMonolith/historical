@@ -1,0 +1,35 @@
+CREATURE_START
+CREATURE_DATA 1 1 150087 149754 18 
+div(orientation-up);
+set-spring-fluctuations(dilation);
+split-dup(-0.443257, 0.196662, -0.420072);
+pop();
+split-dup(-0.845614, -0.81043, -0.557935);
+split-dup(-0.908655, 0.368626, -0.403759);
+split-dup(-0.908655, 0.4195, -0.400271);
+add(-0.88862, -0.43732, 0.170813);
+switch-stack(stack-d);
+rotate(spring-constants);
+split-dup(-0.559846, 1, 0.936553);
+add(point-parameters);
+div(0.19802, 0.00868281, -0.0974015 );
+split-dup(-0.534929, 1, 0.936553);
+split-dup(0.177846, 0.49806, -0.590266);
+split-dup(0.918584, 0.50683, 0.585182);
+nop();
+pop();
+merge(-0.423852, 0.00625683, 1);
+set-spring-fluctuations(stack-c);
+pop();
+switch-stack(stack-b);
+pop();
+add(-0.101429, 0.171217, 0.146959);
+mod(0.630166, -0.282095, 0.646975);
+div(0.786284, -0.658669, 0.439306);
+set-point-parameters(orientation-forward);
+push-1(-0.837431 , 0.202941, -0.207011);
+split-dup(location);
+div(0.189124, -0.480109, 0.283944);
+split-dup(orientation-forward);
+split-dup(0.426136, -0.481881, -0.792142);
+CREATURE_END

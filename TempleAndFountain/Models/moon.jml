@@ -1,0 +1,3 @@
+TYPE COMPOSITE
+NAME Moon
+MODEL_FILE Models/moon_disc.jml Textures/moon_512_512.bmp

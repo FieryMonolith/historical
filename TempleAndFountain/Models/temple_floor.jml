@@ -1,0 +1,50 @@
+TYPE COMPOSITE
+NAME TempleFloor
+MODEL_FILE Models/temple_floor_center.jml Textures/marble_512_512.bmp 0.0 48.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_floor_curve.jml -210.0 48.0 0.0 0.0 1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_floor_curve.jml 210.0 48.0 0.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+
+#RightWall
+MODEL_FILE Models/temple_floor_curve_side.jml 210.0 48.0 0.0 -1.0 0.0 0.0 0.0 0.0 -1.0
+
+#LeftWall
+MODEL_FILE Models/temple_floor_curve_side.jml -210.0 48.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0
+
+#FrontBoxes
+MODEL_FILE Models/temple_front_square_top.jml -174.0 48.0 -282.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_front_square_side.jml -210.0 24.0 -282.0 -1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_front_square_side.jml -138.0 24.0 -282.0 1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_front_square_front.jml -174.0 24.0 -354.0
+MODEL_FILE Models/temple_front_square_top.jml 174.0 48.0 -282.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_front_square_side.jml 138.0 24.0 -282.0 -1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_front_square_side.jml 210.0 24.0 -282.0 1.0 0.0 0.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_front_square_front.jml 174.0 24.0 -354.0
+
+#Back wall and floor
+MODEL_FILE Models/temple_back_top.jml 87.0 48.0 246.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_back_top.jml -87.0 48.0 246.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_back_side.jml -210.0 24.0 246.0 -1.0 0.0 0.0 0.0 1.0 0.0 
+MODEL_FILE Models/temple_back_side.jml 210.0 24.0 246.0 1.0 0.0 0.0 0.0 1.0 0.0 
+MODEL_FILE Models/temple_back_back1.jml -174.0 24.0 282.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_back_back1.jml 0.0 24.0 282.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_back_back1.jml 174.0 24.0 282.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_back_back2.jml -87.0 24.0 282.0 0.0 0.0 -1.0 0.0 1.0 0.0
+MODEL_FILE Models/temple_back_back2.jml 87.0 24.0 282.0 0.0 0.0 -1.0 0.0 1.0 0.0
+
+#Steps
+MODEL_FILE Models/temple_step_top3.jml Textures/marble_512_512.bmp 0.0 48.0 -219.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front1.jml Textures/marble_512_512.bmp 0.0 45.0 -228.0
+MODEL_FILE Models/temple_step_top1.jml Textures/marble_512_512.bmp 0.0 42.0 -237.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front3.jml Textures/marble_512_512.bmp 0.0 39.0 -246.0
+MODEL_FILE Models/temple_step_top3.jml Textures/marble_512_512.bmp 0.0 36.0 -255.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front1.jml Textures/marble_512_512.bmp 0.0 33.0 -264.0
+MODEL_FILE Models/temple_step_top2.jml Textures/marble_512_512.bmp 0.0 30.0 -273.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front2.jml Textures/marble_512_512.bmp 0.0 27.0 -282.0
+MODEL_FILE Models/temple_step_top3.jml Textures/marble_512_512.bmp 0.0 24.0 -291.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front3.jml Textures/marble_512_512.bmp 0.0 21.0 -300.0
+MODEL_FILE Models/temple_step_top1.jml Textures/marble_512_512.bmp 0.0 18.0 -309.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front2.jml Textures/marble_512_512.bmp 0.0 15.0 -318.0
+MODEL_FILE Models/temple_step_top1.jml Textures/marble_512_512.bmp 0.0 12.0 -327.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front1.jml Textures/marble_512_512.bmp 0.0 9.0 -336.0
+MODEL_FILE Models/temple_step_top2.jml Textures/marble_512_512.bmp 0.0 6.0 -345.0 0.0 -1.0 0.0 0.0 0.0 -1.0
+MODEL_FILE Models/temple_step_front3.jml Textures/marble_512_512.bmp 0.0 3.0 -354.0

@@ -1,0 +1,3 @@
+TYPE COMPOSITE
+NAME Sun
+MODEL_FILE Models/sun_disc.jml Textures/sun_512_512.bmp
